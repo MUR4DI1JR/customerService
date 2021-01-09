@@ -1,0 +1,50 @@
+html, body {height:100vh;}
+.home-pages{
+    display: flex;
+}
+.home{
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+.side-bar{
+    width: 280px;
+    height: 100vh;
+    background-color: hsl(263deg 47% 18%);
+}
+.logo{
+    width: 158px;
+    height: 48px;
+}
+.logo img{
+    margin: 10px 15px;
+    color: #fff;
+}
+.form-task{
+    margin: 200px 0 0 0;
+}
+.question h1{
+    margin: 5px 0;
+    font-size: 45px;
+    width: 850px;
+    font-weight: bolder;
+    color: hsl(263deg 47% 18%);
+    line-height: 1;
+}
+.question p{
+    margin: 25px 0;
+}
+.question input{
+    width: 650px;
+    height: 30px;
+}
+.right-side-bar{
+    margin: 20px 35px;
+}
+.right-side-bar a{
+    font-weight: bold;
+    text-decoration: none;
+}
+.right-side-bar a:hover{
+    text-decoration: underline;
+}

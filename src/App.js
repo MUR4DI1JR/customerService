@@ -27,7 +27,6 @@ function App({currentUser, clearCurrentUser, setCurrentUser }) {
 
   return (
     <div className="App">
-      <Navbar/>
       <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/sign-in' component={signin}/>

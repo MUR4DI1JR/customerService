@@ -17,7 +17,7 @@ const Signin = () => {
 
     return (
         <div>
-            <h1>Sign iin page</h1>
+            <h1>Sign in page</h1>
             <form>
                 <input
                     type="text"
