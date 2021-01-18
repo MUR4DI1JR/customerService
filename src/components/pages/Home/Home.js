@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from "react-router-dom";
+import {setLocationUser} from "../../../redux/db/dbAction";
+
+
 import './home.css';
 import logo from './../../../assets/better-logo.svg';
 
-const Home = ({currentUser}) => {
+const Home = ({currentUser, setLocationUser}) => {
+    const [location, setLocation] = useState('');
+
+    const clickBtn = (event) =>{
+      event.preventDefault();
+      setLocationUser(location);
+    };
+
     return (
         <div className="home">
             <div className="side-bar">
@@ -20,7 +30,10 @@ const Home = ({currentUser}) => {
                     <input
                         type="text"
                         placeholder="Enter a location"
+                        value={location}
+                        onChange={event => setLocation(event.target.value)}
                     />
+                    <button onClick={clickBtn}>Next</button>
                 </div>
             </div>
 
@@ -37,7 +50,11 @@ const Home = ({currentUser}) => {
 };
 
 const mapStateToProps = state =>({
-    currentUser: state.auth.currentUser
+    currentUser: state.auth.currentUser,
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => ({
+    setLocationUser: location => dispatch(setLocationUser(location))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
