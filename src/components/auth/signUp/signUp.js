@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {auth} from './../../../config/firebaseConfig';
+
 const SignUp = () => {
 
     const [email, setEmail] = useState('');

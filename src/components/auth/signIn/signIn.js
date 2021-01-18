@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {auth} from './../../../config/firebaseConfig';
 
-const Signin = () => {
+const SignIn = () => {
 
     const [email, setEmail] = useState('');
 
@@ -37,4 +37,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default SignIn;
