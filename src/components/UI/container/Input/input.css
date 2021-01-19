@@ -1,0 +1,10 @@
+.Input{
+    height: 50px;
+    border: 1px solid #818587;
+    border-radius: 3px;
+    outline: none;
+}
+.Input:hover,
+.Input:focus {
+    border: 1px solid green;
+}

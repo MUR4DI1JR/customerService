@@ -6,12 +6,17 @@ import {setLocationUser} from "../../../redux/db/dbAction";
 
 import './home.css';
 import logo from './../../../assets/better-logo.svg';
+import Buttons from "../../UI/container/Button/buttons";
+import Inputs from "../../UI/container/Input/inputs";
 
 const Home = ({currentUser, setLocationUser}) => {
     const [location, setLocation] = useState('');
 
     const clickBtn = (event) =>{
       event.preventDefault();
+      if(!location.trim()){
+          return
+      }
       setLocationUser(location);
     };
 
@@ -27,13 +32,15 @@ const Home = ({currentUser, setLocationUser}) => {
                 <div className="question">
                     <h1>What is the address of the property you are refinancing?</h1>
                     <p>Address</p>
-                    <input
+                    <Inputs
                         type="text"
-                        placeholder="Enter a location"
+                        placeholder = "Enter a location"
                         value={location}
-                        onChange={event => setLocation(event.target.value)}
+                        changeText={event => setLocation(event.target.value)}
                     />
-                    <button onClick={clickBtn}>Next</button>
+                </div>
+                <div className="confirm">
+                    {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>next</Buttons> : <button disabled>next</button>}
                 </div>
             </div>
 
