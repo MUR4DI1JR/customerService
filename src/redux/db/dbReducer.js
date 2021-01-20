@@ -1,7 +1,11 @@
 import dbTypes from "./dbTypes";
 
 const initialState = {
-  location: ''
+    location: '',
+    city: '',
+    states: '',
+    code: '',
+    unit: '',
 };
 
 const dbReducer = (state = initialState, action) =>{
@@ -10,6 +14,26 @@ const dbReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 location:  action.payload
+            };
+        case dbTypes.CITY_USER:
+            return {
+                ...state,
+                city: action.payload
+            };
+        case dbTypes.STATES_USER:
+            return {
+                ...state,
+                states: action.payload
+            };
+        case dbTypes.UNIT_USER:
+            return {
+                ...state,
+                unit: action.payload
+            };
+        case dbTypes.ZIP_CODE_USER:
+            return {
+                ...state,
+                code: action.payload
             };
         default:
             return state

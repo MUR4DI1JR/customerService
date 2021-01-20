@@ -34,9 +34,17 @@ html, body {height:100vh;}
 .question p{
     margin: 25px 0;
 }
-.question input{
-    width: 650px;
-    height: 35px;
+.input-block{
+    display: flex;
+}
+.input-block p{
+    margin: 0;
+}
+.input-items{
+    display: flex;
+}
+.input-items p{
+    margin: 0;
 }
 .right-side-bar{
     margin: 20px 35px;

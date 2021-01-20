@@ -1,5 +1,8 @@
 .Input{
-    height: 50px;
+    margin: 10px 40px 10px 0;
+    padding: 5px 20px;
+    width: 600px;
+    height: 30px;
     border: 1px solid #818587;
     border-radius: 3px;
     outline: none;
@@ -7,4 +10,16 @@
 .Input:hover,
 .Input:focus {
     border: 1px solid green;
+}
+.city{
+    width: 260px;
+}
+.state{
+    width: 260px;
+}
+.code{
+    width: 125px;
+}
+.unit{
+    width: 125px;
 }
