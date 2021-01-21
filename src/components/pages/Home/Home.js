@@ -34,6 +34,10 @@ const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStates
                 <div className="logo">
                     <img src={logo} alt="logo"/>
                 </div>
+                <div className="item">
+                    <img src="" alt="ava"/>
+                    <p>{location}</p><p>{states}</p>
+                </div>
             </div>
 
             <div className="form-task">
