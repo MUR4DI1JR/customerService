@@ -23,7 +23,9 @@
     color: #ffffff;
 }
 
-.Danger {
-    background: red;
-    color: #944317;
+.disable {
+    border: none;
+    background: grey;
+    color: #fff;
+    cursor: auto;
 }

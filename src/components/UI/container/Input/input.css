@@ -11,6 +11,9 @@
 .Input:focus {
     border: 1px solid green;
 }
+.error{
+    border: 1px solid red;
+}
 .city{
     width: 260px;
 }

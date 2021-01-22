@@ -6,6 +6,7 @@ import {setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser} f
 
 import './home.css';
 import logo from './../../../assets/better-logo.svg';
+import roofIcon from './../../../assets/roof-icon.png';
 import Buttons from "../../UI/container/Button/buttons";
 import Inputs from "../../UI/container/Input/inputs";
 
@@ -18,7 +19,7 @@ const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStates
 
     const clickBtn = (event) =>{
       event.preventDefault();
-      if(!location.trim()){
+      if(!city.trim()){
           return
       }
       setLocationUser(location);
@@ -33,10 +34,13 @@ const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStates
             <div className="side-bar">
                 <div className="logo">
                     <img src={logo} alt="logo"/>
-                </div>
-                <div className="item">
-                    <img src="" alt="ava"/>
-                    <p>{location}</p><p>{states}</p>
+                    {location ?
+                        <div className="item">
+                            <img src={roofIcon} alt="ava"/>
+                            <p>{location}</p>
+                            <p>{states}</p>
+                        </div> : console.log("muradil")
+                    }
                 </div>
             </div>
 
@@ -58,7 +62,7 @@ const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStates
                                 <p>Apt/Unit</p>
                                 <Inputs
                                     type="text"
-                                    inputType="unit"
+                                    inputType={unit ? "unit" : "unit error"}
                                     value={unit}
                                     changeText={event => setUnit(event.target.value)}
                                 />
@@ -68,21 +72,36 @@ const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStates
                         <div className="input-items">
                             <div className="input-item-1">
                                 <p>city</p>
-                                <Inputs type="text" inputType="city" value={city} changeText={event => setCity(event.target.value)}/>
+                                <Inputs
+                                    type="text"
+                                    inputType={city ? "city" : "city error"}
+                                    value={city}
+                                    changeText={event => setCity(event.target.value)}
+                                />
                             </div>
                             <div className="input-item-2">
                                 <p>state</p>
-                                <Inputs type="text" inputType="state" value={states} changeText={event => setStates(event.target.value)}/>
+                                <Inputs
+                                    type="text"
+                                    inputType={states ? "state" : "state error"}
+                                    value={states}
+                                    changeText={event => setStates(event.target.value)}
+                                />
                             </div>
                             <div className="input-item-3">
                                 <p>ZIP code</p>
-                                <Inputs type="text" inputType="code" value={code} changeText={event => setCode(event.target.value)}/>
+                                <Inputs
+                                    type="text"
+                                    inputType={code ? "code" : "code error"}
+                                    value={code}
+                                    changeText={event => setCode(event.target.value)}
+                                />
                             </div>
                         </div> : console.log("muradil")
                     }
                 </div>
                 <div className="confirm">
-                    {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>next</Buttons> : <button disabled>next</button>}
+                    {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>next</Buttons> : <Buttons btnType="disable" dis={true}>next</Buttons>}
                 </div>
             </div>
 
