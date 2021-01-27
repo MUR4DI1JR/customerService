@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from "react-router-dom";
 import {setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser} from "../../../redux/db/dbAction";
-import store from './../../../redux/db/dbReducer';
 
 
 import './home.css';
@@ -14,6 +13,7 @@ import Address from "./Address";
 const Home = ({location, states}) => {
     const clickBtn = (event) =>{
       event.preventDefault();
+
     };
     return (
         <div className="home">
@@ -30,9 +30,11 @@ const Home = ({location, states}) => {
                      </div>
                 </div>
             </div>
-            <Address/>
-            <div className="confirm">
-                {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>Next</Buttons> : <Buttons btnType="disable" dis={true}>Next</Buttons>}
+            <div className="block">
+                <Address/>
+                <div className="confirm">
+                    {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>Next</Buttons> : <Buttons btnType="disable" dis={true}>Next</Buttons>}
+                </div>
             </div>
             <div className="right-side-bar">
                 <NavLink to="/sign-in">Sign in</NavLink>

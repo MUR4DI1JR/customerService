@@ -1,12 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser} from "../../../redux/db/dbAction";
-
-
 import Inputs from "../../UI/container/Input/inputs";
 
 const Address = ({ location, code, unit, states, city, setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser}) => {
-
 
     return (
         <div className="form-task">
