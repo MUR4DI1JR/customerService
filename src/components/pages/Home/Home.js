@@ -1,110 +1,39 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from "react-router-dom";
 import {setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser} from "../../../redux/db/dbAction";
+import store from './../../../redux/db/dbReducer';
 
 
 import './home.css';
 import logo from './../../../assets/better-logo.svg';
 import roofIcon from './../../../assets/roof-icon.png';
 import Buttons from "../../UI/container/Button/buttons";
-import Inputs from "../../UI/container/Input/inputs";
+import Address from "./Address";
 
-const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser}) => {
-    const [location, setLocation] = useState('');
-    const [city, setCity] = useState('');
-    const [states, setStates] = useState('');
-    const [code, setCode] = useState('');
-    const [unit, setUnit] = useState('');
-
+const Home = ({location, states}) => {
     const clickBtn = (event) =>{
       event.preventDefault();
-      if(!city.trim()){
-          return
-      }
-      setLocationUser(location);
-      setCodeUser(code);
-      setUnitUser(unit);
-      setStatesUser(states);
-      setCityUser(city)
     };
-
     return (
         <div className="home">
             <div className="side-bar">
                 <div className="logo">
                     <img src={logo} alt="logo"/>
-                    {location ?
-                        <div className="item">
-                            <img src={roofIcon} alt="ava"/>
+                    <div className="item">
+                        <img src={roofIcon} alt="ava"/>
+                        {location ? <div>
                             <p>{location}</p>
                             <p>{states}</p>
-                        </div> : console.log("muradil")
-                    }
+                            </div>: <p>New refinance</p>
+                        }
+                     </div>
                 </div>
             </div>
-
-            <div className="form-task">
-                <div className="question">
-                    <h1>What is the address of the property you are refinancing?</h1>
-                    <div className="input-block">
-                        <div className="input-item">
-                            <p>Address</p>
-                            <Inputs
-                                type="text"
-                                placeholder = "Enter a location"
-                                value={location}
-                                changeText={event => setLocation(event.target.value)}
-                            />
-                        </div>
-                        {location ?
-                            <div>
-                                <p>Apt/Unit</p>
-                                <Inputs
-                                    type="text"
-                                    inputType={unit ? "unit" : "unit error"}
-                                    value={unit}
-                                    changeText={event => setUnit(event.target.value)}
-                                />
-                            </div> : console.log("ww")}
-                    </div>
-                    {location ?
-                        <div className="input-items">
-                            <div className="input-item-1">
-                                <p>city</p>
-                                <Inputs
-                                    type="text"
-                                    inputType={city ? "city" : "city error"}
-                                    value={city}
-                                    changeText={event => setCity(event.target.value)}
-                                />
-                            </div>
-                            <div className="input-item-2">
-                                <p>state</p>
-                                <Inputs
-                                    type="text"
-                                    inputType={states ? "state" : "state error"}
-                                    value={states}
-                                    changeText={event => setStates(event.target.value)}
-                                />
-                            </div>
-                            <div className="input-item-3">
-                                <p>ZIP code</p>
-                                <Inputs
-                                    type="text"
-                                    inputType={code ? "code" : "code error"}
-                                    value={code}
-                                    changeText={event => setCode(event.target.value)}
-                                />
-                            </div>
-                        </div> : console.log("muradil")
-                    }
-                </div>
-                <div className="confirm">
-                    {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>next</Buttons> : <Buttons btnType="disable" dis={true}>next</Buttons>}
-                </div>
+            <Address/>
+            <div className="confirm">
+                {location ? <Buttons clicked={clickBtn} btnType={location ? "Success" : "Danger"}>Next</Buttons> : <Buttons btnType="disable" dis={true}>Next</Buttons>}
             </div>
-
             <div className="right-side-bar">
                 <NavLink to="/sign-in">Sign in</NavLink>
             </div>
@@ -119,6 +48,8 @@ const Home = ({currentUser, setLocationUser, setCityUser, setCodeUser, setStates
 
 const mapStateToProps = state =>({
     currentUser: state.auth.currentUser,
+    location: state.location.location,
+    states: state.location.states
 });
 
 const mapDispatchToProps = dispatch => ({
