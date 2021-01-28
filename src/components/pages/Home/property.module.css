@@ -1,0 +1,25 @@
+.property{
+    margin-top: 150px;
+}
+.item{
+    display: block;
+}
+.item ul{
+    list-style: none;
+    padding: 0;
+}
+.item h1{
+    margin: 5px 0;
+    font-size: 45px;
+    width: 850px;
+    font-weight: bolder;
+    color: hsl(263deg 47% 18%);
+    line-height: 1;
+}
+.modes{
+    display: flex;
+}
+.modes svg{
+    width: 25px;
+    color: green;
+}

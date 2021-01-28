@@ -3,7 +3,8 @@ const dbTypes = {
     CITY_USER: 'CITY_USER',
     STATES_USER: 'STATES_USER',
     UNIT_USER: 'UNIT_USER',
-    ZIP_CODE_USER: 'ZIP_CODE_USER'
+    ZIP_CODE_USER: 'ZIP_CODE_USER',
+    NEXT_CLICK: 'NEXT_CLICK'
 };
 
 export default dbTypes;

@@ -1,0 +1,9 @@
+.radioChecked:checked + span{
+    background-image: url(./../../../../assets/checked.svg);
+}
+/*span{*/
+/*    width: 25px;*/
+/*    color: green;*/
+/*    !*background-image: url(./../../../../assets/checked.svg);*!*/
+/*    background-color: black;*/
+/*}*/

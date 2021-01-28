@@ -3,14 +3,16 @@ import {connect} from 'react-redux';
 import {setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser} from "../../../redux/db/dbAction";
 import Inputs from "../../UI/container/Input/inputs";
 
+import s from './address.module.css';
+
 const Address = ({ location, code, unit, states, city, setLocationUser, setCityUser, setCodeUser, setStatesUser, setUnitUser}) => {
 
     return (
-        <div className="form-task">
-            <div className="question">
+        <div className={s.form_task}>
+            <div className={s.question}>
                 <h1>What is the address of the property you are refinancing?</h1>
-                <div className="input-block">
-                    <div className="input-item">
+                <div className={s.input_block}>
+                    <div className={s.input_item}>
                         <p>Address</p>
                         <Inputs
                             type="text"
@@ -31,8 +33,8 @@ const Address = ({ location, code, unit, states, city, setLocationUser, setCityU
                         </div> : null}
                 </div>
                 {location ?
-                    <div className="input-items">
-                        <div className="input-item-1">
+                    <div className={s.input_items}>
+                        <div className={s.input_item_1}>
                             <p>city</p>
                             <Inputs
                                 type="text"
@@ -41,7 +43,7 @@ const Address = ({ location, code, unit, states, city, setLocationUser, setCityU
                                 changeText={event => setCityUser(event.target.value)}
                             />
                         </div>
-                        <div className="input-item-2">
+                        <div className={s.input_item_2}>
                             <p>state</p>
                             <Inputs
                                 type="text"
@@ -50,7 +52,7 @@ const Address = ({ location, code, unit, states, city, setLocationUser, setCityU
                                 changeText={event => setStatesUser(event.target.value)}
                             />
                         </div>
-                        <div className="input-item-3">
+                        <div className={s.input_item_3}>
                             <p>ZIP code</p>
                             <Inputs
                                 type="text"

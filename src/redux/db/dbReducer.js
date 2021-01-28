@@ -6,6 +6,7 @@ const initialState = {
     states: '',
     code: '',
     unit: '',
+    next: false
 };
 
 const dbReducer = (state = initialState, action) =>{
@@ -34,6 +35,11 @@ const dbReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 code: action.payload
+            };
+        case dbTypes.NEXT_CLICK:
+            return {
+                ...state,
+                next: action.payload
             };
         default:
             return state

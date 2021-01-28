@@ -30,3 +30,9 @@ export const setCodeUser = (code) =>{
         payload: code
     }
 };
+export const nextClick = (next) =>{
+    return{
+       type: dbTypes.NEXT_CLICK,
+       payload: next
+    }
+};
