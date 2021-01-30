@@ -13,9 +13,9 @@ const Property = () => {
                 <h1>Tell us more about the property you are refinancing</h1>
                 <div className={s.modes}>
                     <form>
-                        <RadioCheck name="refinancing" title="Primary check" value="primaryResidence" forHtml="modes"/>
-                        <RadioCheck name="refinancing" title="Second home" value="secondHome" forHtml="modes"/>
-                        <RadioCheck name="refinancing" title="Investment" value="Investment" forHtml="modes"/>
+                        <RadioCheck name="refinancing" title="Primary check" value="primaryResidence" forHtml="primaryCheck"/>
+                        <RadioCheck name="refinancing" title="Second home" value="secondHome" forHtml="secondHome"/>
+                        <RadioCheck name="refinancing" title="Investment" value="Investment" forHtml="investment"/>
                     </form>
                 </div>
             </div>
@@ -23,10 +23,10 @@ const Property = () => {
                 <h1>What property type would this be?</h1>
                 <div className={s.modes}>
                     <form>
-                        <RadioCheck name="propertyType" title="Single Family" value="Single Family"/>
-                        <RadioCheck name="propertyType" title="Townhouse or Condo" value="Condo"/>
-                        {/*<RadioCheck name="propertyType" title="2 to 4 units" value="2 to 4 units"/>*/}
-                        <RadioCheck name="propertyType" title="Cooperative" value="Cooperative"/>
+                        <RadioCheck name="propertyType" title="Single Family" value="Single Family" forHtml="singleFamily"/>
+                        <RadioCheck name="propertyType" title="Townhouse or Condo" value="Condo" forHtml="condo"/>
+                        {/*<RadioCheck name="propertyType" title="2 to 4 units" value="2 to 4 units" forHtml="2to4Units"/>*/}
+                        <RadioCheck name="propertyType" title="Cooperative" value="Cooperative" forHtml="cooperative"/>
                     </form>
                 </div>
             </div>

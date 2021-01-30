@@ -1,9 +1,31 @@
-.radioChecked:checked + span{
-    background-image: url(./../../../../assets/checked.svg);
+.radio{
+    display: flex;
+    flex-wrap: wrap;
 }
-/*span{*/
-/*    width: 25px;*/
-/*    color: green;*/
-/*    !*background-image: url(./../../../../assets/checked.svg);*!*/
-/*    background-color: black;*/
+.radio label{
+    color: #a3b4c2;
+    font-weight: bold;
+    font-size: 25px;
+}
+input[type='radio']{
+    display: none;
+}
+.radio label:hover{
+    color: #291843;
+    cursor: pointer;
+}
+input[type='radio']:checked + .radioCheck label{
+    color: #291843;
+}
+.icon{
+    display: none;
+    color: #01bf92;
+    font-size: 25px;
+}
+input[type='radio']:checked + .icon{
+    display: block;
+   margin-right: 51px;
+}
+/*.radioCheck{*/
+/*    margin-left: 25px;*/
 /*}*/

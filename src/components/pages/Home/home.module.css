@@ -3,13 +3,13 @@ html, body {height:100vh;}
     display: flex;
 }
 .home{
-    height: 220vh;
+    height: 100vh;
     display: flex;
     justify-content: space-between;
 }
 .side_bar{
     width: 280px;
-    height: 100vh;
+    height: 200vh;
     background-color: hsl(263deg 47% 18%);
 }
 .logo{

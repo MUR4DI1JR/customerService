@@ -19,7 +19,3 @@
 .modes{
     display: flex;
 }
-.modes svg{
-    width: 25px;
-    color: green;
-}
