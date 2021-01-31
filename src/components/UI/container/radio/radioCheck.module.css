@@ -6,6 +6,7 @@
     color: #a3b4c2;
     font-weight: bold;
     font-size: 25px;
+    display: flex;
 }
 input[type='radio']{
     display: none;
@@ -14,17 +15,18 @@ input[type='radio']{
     color: #291843;
     cursor: pointer;
 }
-input[type='radio']:checked + .radioCheck label{
+input[type='radio']:checked + label{
     color: #291843;
+    margin-left: -50px;
 }
 .icon{
     display: none;
     color: #01bf92;
     font-size: 25px;
 }
-input[type='radio']:checked + .icon{
+input[type='radio']:checked + label .icon{
     display: block;
-   margin-right: 51px;
+    margin-right: 25px;
 }
 /*.radioCheck{*/
 /*    margin-left: 25px;*/

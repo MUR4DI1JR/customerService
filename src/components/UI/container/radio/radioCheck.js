@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import check from './../../../../assets/checked.svg';
 import s from './radioCheck.module.css';
 
 const RadioCheck = ({value, title, forHtml, name, change}) => {
+
     return (
         <div className={s.radio}>
             <input
@@ -14,10 +14,11 @@ const RadioCheck = ({value, title, forHtml, name, change}) => {
                 value={value}
                 onChange={change}
             />
-            <div className={s.icon}>
-                <FontAwesomeIcon icon={faCheck}/>
-            </div>
-            <label htmlFor={forHtml}>{title}</label>
+            <label htmlFor={forHtml}>
+                <div className={s.icon}>
+                    <FontAwesomeIcon icon={faCheck}/>
+                </div>
+                {title}</label>
         </div>
     );
 };
