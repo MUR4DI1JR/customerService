@@ -8,28 +8,20 @@ const Property = () => {
 
     const [aboutProperty, setAboutProperty] = useState('');
     const [typeProperty, setTypeProperty] = useState('');
-    const [showUnit, setShowUnit] = useState(false);
-    const [showCount, setShowCount] = useState(false);
+    const [countUnit, setCountUnit] = useState('');
 
     const aboutPropertyHandle = e =>{
         setAboutProperty(e.target.value);
-
-        if(aboutProperty === 'primaryResidence'){
-            setShowUnit(true)
-        }else{
-            setShowUnit(false)
-        }
     };
-
-    useEffect(() => {
-
-    }, [aboutProperty]);
 
     const typePropertyHandle = e =>{
         setTypeProperty(e.target.value);
     };
-    console.log("showUnit",showUnit);
-    console.log(aboutProperty);
+
+    const countUnitHandle = e =>{
+        setCountUnit(e.target.value)
+    };
+
     return (
         <div className={s.property}>
             <div className={s.item}>
@@ -48,28 +40,28 @@ const Property = () => {
                     <form>
                         <RadioCheck name="propertyType" title="Single Family" value="singleFamily" forHtml="singleFamily" change={typePropertyHandle}/>
                         <RadioCheck name="propertyType" title="Townhouse or Condo" value="condo" forHtml="condo" change={typePropertyHandle}/>
-                        {showUnit ? <RadioCheck name="propertyType" title="2 to 4 units" value="2to4units" forHtml="2to4Units" change={typePropertyHandle}/> : null}
+                        {aboutProperty === 'primaryResidence' || aboutProperty === 'Investment' ? <RadioCheck name="propertyType" title="2 to 4 units" value="2to4units" forHtml="2to4Units" change={typePropertyHandle}/> : null}
                         <RadioCheck name="propertyType" title="Cooperative" value="cooperative" forHtml="cooperative" change={typePropertyHandle}/>
                     </form>
                 </div>
             </div>
-            {/*{quantity ?*/}
-            {/*    <div>*/}
-            {/*        <div className={s.item}>*/}
-            {/*            <h1>How many units will the property have?</h1>*/}
-            {/*            <div className={s.modes}>*/}
-            {/*                <form>*/}
-            {/*                    <RadioCheck name="numberOfUnits" title="2 Units" value="2"/>*/}
-            {/*                    <RadioCheck name="numberOfUnits" title="3 Units" value="3"/>*/}
-            {/*                    <RadioCheck name="numberOfUnits" title="4 Units" value="4"/>*/}
-            {/*                </form>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    :*/}
-            {/*    null*/}
-            {/*}*/}
-            {showCount ?
+            {typeProperty === '2to4units' ?
+                <div>
+                    <div className={s.item}>
+                        <h1>How many units will the property have?</h1>
+                        <div className={s.modes}>
+                            <form>
+                                <RadioCheck name="numberOfUnits" title="2 Units" value="2" forHtml="2" change={countUnitHandle}/>
+                                <RadioCheck name="numberOfUnits" title="3 Units" value="3" forHtml="3" change={countUnitHandle}/>
+                                <RadioCheck name="numberOfUnits" title="4 Units" value="4" forHtml="4" change={countUnitHandle}/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                :
+                null
+            }
+            {aboutProperty === 'Investment' ?
                 <div className={s.item}>
                     <h1>What's the expected monthly rental income?</h1>
                     <div className={s.finance}>
