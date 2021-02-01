@@ -28,6 +28,3 @@ input[type='radio']:checked + label .icon{
     display: block;
     margin-right: 25px;
 }
-/*.radioCheck{*/
-/*    margin-left: 25px;*/
-/*}*/

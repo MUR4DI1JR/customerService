@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import check from './../../../assets/checked.svg';
+import React, {useState, useEffect} from 'react';
 
 import s from './property.module.css';
 import Buttons from "../../UI/container/Button/buttons";
@@ -7,15 +6,39 @@ import RadioCheck from "../../UI/container/radio/radioCheck";
 
 const Property = () => {
 
+    const [aboutProperty, setAboutProperty] = useState('');
+    const [typeProperty, setTypeProperty] = useState('');
+    const [showUnit, setShowUnit] = useState(false);
+    const [showCount, setShowCount] = useState(false);
+
+    const aboutPropertyHandle = e =>{
+        setAboutProperty(e.target.value);
+
+        if(aboutProperty === 'primaryResidence'){
+            setShowUnit(true)
+        }else{
+            setShowUnit(false)
+        }
+    };
+
+    useEffect(() => {
+
+    }, [aboutProperty]);
+
+    const typePropertyHandle = e =>{
+        setTypeProperty(e.target.value);
+    };
+    console.log("showUnit",showUnit);
+    console.log(aboutProperty);
     return (
         <div className={s.property}>
             <div className={s.item}>
                 <h1>Tell us more about the property you are refinancing</h1>
                 <div className={s.modes}>
                     <form>
-                        <RadioCheck name="refinancing" title="Primary check" value="primaryResidence" forHtml="primaryCheck"/>
-                        <RadioCheck name="refinancing" title="Second home" value="secondHome" forHtml="secondHome"/>
-                        <RadioCheck name="refinancing" title="Investment" value="Investment" forHtml="investment"/>
+                        <RadioCheck name="refinancing" title="Primary check" value="primaryResidence" forHtml="primaryCheck" change={aboutPropertyHandle}/>
+                        <RadioCheck name="refinancing" title="Second home" value="secondHome" forHtml="secondHome" change={aboutPropertyHandle}/>
+                        <RadioCheck name="refinancing" title="Investment" value="Investment" forHtml="investment" change={aboutPropertyHandle}/>
                     </form>
                 </div>
             </div>
@@ -23,10 +46,10 @@ const Property = () => {
                 <h1>What property type would this be?</h1>
                 <div className={s.modes}>
                     <form>
-                        <RadioCheck name="propertyType" title="Single Family" value="Single Family" forHtml="singleFamily"/>
-                        <RadioCheck name="propertyType" title="Townhouse or Condo" value="Condo" forHtml="condo"/>
-                        {/*<RadioCheck name="propertyType" title="2 to 4 units" value="2 to 4 units" forHtml="2to4Units"/>*/}
-                        <RadioCheck name="propertyType" title="Cooperative" value="Cooperative" forHtml="cooperative"/>
+                        <RadioCheck name="propertyType" title="Single Family" value="singleFamily" forHtml="singleFamily" change={typePropertyHandle}/>
+                        <RadioCheck name="propertyType" title="Townhouse or Condo" value="condo" forHtml="condo" change={typePropertyHandle}/>
+                        {showUnit ? <RadioCheck name="propertyType" title="2 to 4 units" value="2to4units" forHtml="2to4Units" change={typePropertyHandle}/> : null}
+                        <RadioCheck name="propertyType" title="Cooperative" value="cooperative" forHtml="cooperative" change={typePropertyHandle}/>
                     </form>
                 </div>
             </div>
@@ -46,18 +69,18 @@ const Property = () => {
             {/*    :*/}
             {/*    null*/}
             {/*}*/}
-            {/*{investValue ?*/}
-            {/*    <div className={s.item}>*/}
-            {/*        <h1>What's the expected monthly rental income?</h1>*/}
-            {/*        <div className={s.finance}>*/}
-            {/*            <div className={s.markFinance}>*/}
-            {/*                <p>$</p>*/}
-            {/*                <input type="text"/>*/}
-            {/*            </div>*/}
-            {/*            <p>This rental income must appear on a lease agreement or on your tax return. If it doesn't, please enter $0.</p>*/}
-            {/*        </div>*/}
-            {/*    </div> : null*/}
-            {/*}*/}
+            {showCount ?
+                <div className={s.item}>
+                    <h1>What's the expected monthly rental income?</h1>
+                    <div className={s.finance}>
+                        <div className={s.markFinance}>
+                            <p>$</p>
+                            <input type="text"/>
+                        </div>
+                        <p>This rental income must appear on a lease agreement or on your tax return. If it doesn't, please enter $0.</p>
+                    </div>
+                </div> : null
+            }
             <div className={s.item}>
                 <h1>Estimated home value</h1>
                 <div className={s.finance}>

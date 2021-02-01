@@ -18,7 +18,8 @@ const RadioCheck = ({value, title, forHtml, name, change}) => {
                 <div className={s.icon}>
                     <FontAwesomeIcon icon={faCheck}/>
                 </div>
-                {title}</label>
+                {title}
+            </label>
         </div>
     );
 };
