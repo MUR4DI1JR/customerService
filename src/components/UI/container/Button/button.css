@@ -19,13 +19,29 @@
 }
 
 .Success {
-    background: green;
+    background: #00c397;
     color: #ffffff;
 }
-
+.Success a{
+    color: #fff;
+    text-decoration: none;
+}
 .disable {
     border: none;
     background: grey;
     color: #fff;
     cursor: auto;
+}
+.disable a{
+    text-decoration: none;
+    color: #fff;
+    cursor: auto;
+}
+.back{
+    background: #fff;
+    color: black;
+    border: 1px solid #a3b4c2;
+}
+.back:hover{
+    border: 2px solid #a3b4c2;
 }

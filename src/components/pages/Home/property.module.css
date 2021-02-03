@@ -9,7 +9,7 @@
     padding: 0;
 }
 .item h1{
-    margin: 5px 0;
+    margin: 10px 0;
     font-size: 45px;
     width: 850px;
     font-weight: bolder;
@@ -18,4 +18,47 @@
 }
 .modes{
     display: flex;
+}
+.modes label{
+    margin: 5px 0;
+}
+.investValue h1{
+    width: 400px;
+}
+.finance p {
+    color: #33234c;
+    width: 380px;
+    font-size: 12px;
+    font-weight: 400;
+}
+.markFinance{
+    margin-top: 15px;
+    width: 380px;
+    padding: 8px 10px 8px 10px;
+    display: flex;
+    border: 1px solid #dcdce3;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px 2px rgba(0,0,0,0.28);
+}
+.markFinance span{
+    margin: 0;
+    color: #33234c;
+}
+.markFinance input{
+    outline: none;
+    border: none;
+    width: 100%;
+}
+.markFinance input::-webkit-inner-spin-button {
+    display: none;
+}
+.markFinance:hover{
+    border-color: #00bf92;
+}
+.userValue{
+    margin-top: 25px;
+    width: 100%;
+}
+.errorValue{
+    color: #ff3369 !important;
 }

@@ -30,9 +30,46 @@ export const setCodeUser = (code) =>{
         payload: code
     }
 };
+export const setAboutProperty = (about) =>{
+    return{
+        type: dbTypes.ABOUT_PROPERTY,
+        payload: about
+    }
+};
+export const setTypeProperty = (type) =>{
+    return{
+        type: dbTypes.TYPE_PROPERTY,
+        payload: type
+    }
+};
+export const setCountUnit = (count) =>{
+    return{
+        type: dbTypes.COUNT_UNIT,
+        payload: count
+    }
+};
+export const setInvestValue = (invest) =>{
+    return{
+        type: dbTypes.INVEST_VALUE,
+        payload: invest
+    }
+};
+export const setHomeValue = (homeValue) =>{
+    return{
+        type: dbTypes.HOME_VALUE,
+        payload: homeValue
+    }
+};
+
 export const nextClick = (next) =>{
     return{
        type: dbTypes.NEXT_CLICK,
        payload: next
+    }
+};
+export const backClick = (next) =>{
+    return{
+        type: dbTypes.BACK_CLICK,
+        payload: next
     }
 };

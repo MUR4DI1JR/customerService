@@ -23,7 +23,7 @@ html, body {height:100vh;}
 }
 .item{
     margin: 10px 15px;
-    width: 280px;
+    width: 265px;
     display: flex;
 }
 .item img{
@@ -33,7 +33,23 @@ html, body {height:100vh;}
 }
 .item p{
     color: #fff;
+    margin: 15px 0;
+}
+.address{
+    display: block;
+    margin: 15px 0;
+    width: 185px;
+    flex-wrap: wrap;
+}
+.address p{
+    color: #fff;
     margin: 0;
+    font-size: 14px;
+}
+.address span{
+    color: hsl(199deg 85% 92%);
+    margin: 0;
+    font-size: 12px;
 }
 .right_side_bar{
     margin: 20px 90px;

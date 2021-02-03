@@ -1,14 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {NavLink} from "react-router-dom";
 
 import s from './property.module.css';
 import Buttons from "../../UI/container/Button/buttons";
 import RadioCheck from "../../UI/container/radio/radioCheck";
+import {
+    backClick,
+    setInvestValue,
+    setCountUnit,
+    setAboutProperty,
+    setTypeProperty,
+    setHomeValue
+} from "../../../redux/db/dbAction";
 
-const Property = () => {
+const Property = ({ aboutProperty, typeProperty, countUnit, investValue,homeValue, backClick, setInvestValue, setCountUnit, setAboutProperty, setTypeProperty, setHomeValue}) => {
 
-    const [aboutProperty, setAboutProperty] = useState('');
-    const [typeProperty, setTypeProperty] = useState('');
-    const [countUnit, setCountUnit] = useState('');
 
     const aboutPropertyHandle = e =>{
         setAboutProperty(e.target.value);
@@ -22,6 +29,20 @@ const Property = () => {
         setCountUnit(e.target.value)
     };
 
+    const investValueHandle = ({target}) =>{
+        setInvestValue(target.value.replace(/\D*/g, ""))
+    };
+
+    const homeValueHandle = ({target}) =>{
+        setHomeValue(target.value.replace(/\D*/g, ""))
+    };
+
+    const getValue = (value) => {
+        return value.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+    };
+
+
+
     return (
         <div className={s.property}>
             <div className={s.item}>
@@ -34,7 +55,7 @@ const Property = () => {
                     </form>
                 </div>
             </div>
-            <div className={s.item}>
+            {aboutProperty !== '' ? <div className={s.item}>
                 <h1>What property type would this be?</h1>
                 <div className={s.modes}>
                     <form>
@@ -44,7 +65,7 @@ const Property = () => {
                         <RadioCheck name="propertyType" title="Cooperative" value="cooperative" forHtml="cooperative" change={typePropertyHandle}/>
                     </form>
                 </div>
-            </div>
+            </div>: null}
             {typeProperty === '2to4units' ?
                 <div>
                     <div className={s.item}>
@@ -62,33 +83,53 @@ const Property = () => {
                 null
             }
             {aboutProperty === 'Investment' ?
-                <div className={s.item}>
+                <div className={`${s.item} ${s.investValue}`}>
                     <h1>What's the expected monthly rental income?</h1>
                     <div className={s.finance}>
                         <div className={s.markFinance}>
-                            <p>$</p>
-                            <input type="text"/>
+                            <span>$</span>
+                            <input type="tel"  onChange={investValueHandle} value={getValue(investValue)}/>
                         </div>
+                        {investValue.trim() ? null: <p className={s.errorValue}>Invalid amount.</p>}
                         <p>This rental income must appear on a lease agreement or on your tax return. If it doesn't, please enter $0.</p>
                     </div>
                 </div> : null
             }
-            <div className={s.item}>
+            {typeProperty !== '' ? <div className={s.item}>
                 <h1>Estimated home value</h1>
                 <div className={s.finance}>
-                    <div className={s.markFinance}>
-                        <p>$</p>
-                        <input type="text"/>
+                    <div className={`${s.markFinance} ${s.userValue}`}>
+                        <span>$</span>
+                        <input type="tel" onChange={homeValueHandle} value={getValue(homeValue)}/>
                     </div>
+                    {homeValue.length < 5 ? <p className={s.errorValue}>Value must be more than $10,000.</p> : null}
                     <p>For example: $250,000</p>
                 </div>
-            </div>
+            </div>: null}
             <div className={s.confirm}>
-                <Buttons>Previous</Buttons>
-                <Buttons>Next</Buttons>
+                <Buttons clicked={backClick} btnType="back">Previous</Buttons>
+                <Buttons btnType={homeValue.length < 5 ? "disable" : "Success"}><NavLink to="/sign-up">Next</NavLink></Buttons>
             </div>
         </div>
     );
 };
 
-export default Property;
+const mapStateToProps = state =>({
+    aboutProperty: state.location.aboutProperty,
+    typeProperty: state.location.typeProperty,
+    countUnit: state.location.countUnit,
+    investValue: state.location.investValue,
+    homeValue: state.location.homeValue
+});
+
+const mapDispatchToProps = dispatch => ({
+    backClick: next => dispatch(backClick(false)),
+    setAboutProperty: about => dispatch(setAboutProperty(about)),
+    setTypeProperty: type => dispatch(setTypeProperty(type)),
+    setCountUnit: count => dispatch(setCountUnit(count)),
+    setInvestValue: invest => dispatch(setInvestValue(invest)),
+    setHomeValue: homeValue => dispatch(setHomeValue(homeValue))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Property);

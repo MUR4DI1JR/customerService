@@ -6,7 +6,12 @@ const initialState = {
     states: '',
     code: '',
     unit: '',
-    next: false
+    next: false,
+    aboutProperty: '',
+    typeProperty: '',
+    countUnit: '',
+    investValue: '',
+    homeValue: ''
 };
 
 const dbReducer = (state = initialState, action) =>{
@@ -36,7 +41,37 @@ const dbReducer = (state = initialState, action) =>{
                 ...state,
                 code: action.payload
             };
+        case dbTypes.ABOUT_PROPERTY:
+            return {
+                ...state,
+                aboutProperty: action.payload
+            };
+        case dbTypes.TYPE_PROPERTY:
+            return {
+                ...state,
+                typeProperty: action.payload
+            };
+        case dbTypes.COUNT_UNIT:
+            return {
+                ...state,
+                countUnit: action.payload
+            };
+        case dbTypes.INVEST_VALUE:
+            return {
+                ...state,
+                investValue: action.payload
+            };
+        case dbTypes.HOME_VALUE:
+            return {
+                ...state,
+                homeValue: action.payload
+            };
         case dbTypes.NEXT_CLICK:
+            return {
+                ...state,
+                next: action.payload
+            };
+        case dbTypes.BACK_CLICK:
             return {
                 ...state,
                 next: action.payload

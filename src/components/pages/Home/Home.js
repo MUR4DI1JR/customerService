@@ -11,7 +11,7 @@ import Buttons from "../../UI/container/Button/buttons";
 import Address from "./Address";
 import Property from "./property";
 
-const Home = ({location, states, next, nextClick}) => {
+const Home = ({location, city,  next, code, nextClick}) => {
     return (
         <div className={s.home}>
             <div className={s.side_bar}>
@@ -19,10 +19,12 @@ const Home = ({location, states, next, nextClick}) => {
                     <img src={logo} alt="logo"/>
                     <div className={s.item}>
                         <img src={roofIcon} alt="ava"/>
-                        {location ? <div>
-                            <p>{location}</p>
-                            <p>{states}</p>
-                            </div>: <p>New refinance</p>
+                        {location ?
+                            <div className={s.address}>
+                            <p>{city}</p>
+                            <span>{location}</span>
+                            </div>:
+                            <p>New refinance</p>
                         }
                      </div>
                 </div>
@@ -32,10 +34,11 @@ const Home = ({location, states, next, nextClick}) => {
                         <div className={s.block}>
                             <Address/>
                             <div className={s.confirm}>
-                                {location ?
+                                {location !== '' && code !== '' ?
                                     <Buttons clicked={nextClick} btnType={location ? "Success" : "Danger"}>Next</Buttons>
                                         :
-                                    <Buttons btnType="disable" dis={true}>Next</Buttons>}
+                                    <Buttons btnType="disable" dis={true}>Next</Buttons>
+                                }
                             </div>
                         </div>
                 }
@@ -52,9 +55,9 @@ const Home = ({location, states, next, nextClick}) => {
 };
 
 const mapStateToProps = state =>({
-    currentUser: state.auth.currentUser,
     location: state.location.location,
-    states: state.location.states,
+    city: state.location.city,
+    code: state.location.code,
     next: state.location.next
 });
 
