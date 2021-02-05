@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useLocation} from "react-router";
 import {db} from "../../../config/firebaseConfig";
 import {connect} from 'react-redux';
-import Sidebar from "../../UI/sidebar/sidebar";
+
 
 import s from './sendDB.module.css';
 import Buttons from "../../UI/container/Button/buttons";
 import Inputs from "../../UI/container/Input/inputs";
+import Sidebar from "../../UI/sidebar/sidebar";
 
 const SendDb = ({location, states, city, code, aboutProperty, typeProperty, countUnit, investValue, homeValue}) => {
     const [email, setEmail] = useState('');
+    const {pathname} = useLocation();
 
     const setEmailHandle = (e) =>{
       setEmail(e.target.value)
@@ -36,6 +39,10 @@ const SendDb = ({location, states, city, code, aboutProperty, typeProperty, coun
             return
         }
     };
+
+    useEffect(() =>{
+       window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <div className={s.item}>
