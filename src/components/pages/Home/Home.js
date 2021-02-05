@@ -2,33 +2,19 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from "react-router-dom";
 import {nextClick} from "../../../redux/db/dbAction";
+import {auth} from "../../../config/firebaseConfig";
 
 
 import s from'./home.module.css';
-import logo from './../../../assets/better-logo.svg';
-import roofIcon from './../../../assets/roof-icon.png';
 import Buttons from "../../UI/container/Button/buttons";
 import Address from "./Address";
 import Property from "./property";
+import Sidebar from "../../UI/sidebar/sidebar";
 
-const Home = ({location, city,  next, code, nextClick}) => {
+const Home = ({location, next, code, nextClick, currentUser}) => {
     return (
         <div className={s.home}>
-            <div className={s.side_bar}>
-                <div className={s.logo}>
-                    <img src={logo} alt="logo"/>
-                    <div className={s.item}>
-                        <img src={roofIcon} alt="ava"/>
-                        {location ?
-                            <div className={s.address}>
-                            <p>{city}</p>
-                            <span>{location}</span>
-                            </div>:
-                            <p>New refinance</p>
-                        }
-                     </div>
-                </div>
-            </div>
+            <Sidebar/>
                 {
                     next ? <Property/> :
                         <div className={s.block}>
@@ -43,18 +29,15 @@ const Home = ({location, city,  next, code, nextClick}) => {
                         </div>
                 }
             <div className={s.right_side_bar}>
-                <NavLink to="/sign-in">Sign in</NavLink>
+                {currentUser === null ? <NavLink to="/sign-in">Sign in</NavLink> : <button onClick={() => auth.signOut()}>sign out</button>}
             </div>
 
-
-            {/*{currentUser && currentUser ? (*/}
-            {/*    <p>hello {currentUser.email}</p>*/}
-            {/*): (<p>you are log out, please sign in</p>)}*/}
         </div>
     );
 };
 
 const mapStateToProps = state =>({
+    currentUser: state.auth.currentUser,
     location: state.location.location,
     city: state.location.city,
     code: state.location.code,

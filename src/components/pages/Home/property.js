@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from "react-router-dom";
 
@@ -108,7 +108,7 @@ const Property = ({ aboutProperty, typeProperty, countUnit, investValue,homeValu
             </div>: null}
             <div className={s.confirm}>
                 <Buttons clicked={backClick} btnType="back">Previous</Buttons>
-                <Buttons btnType={homeValue.length < 5 ? "disable" : "Success"}><NavLink to="/sign-up">Next</NavLink></Buttons>
+                <Buttons btnType={homeValue.length < 5 ? "disable" : "Success"}><NavLink to="/send-email">Next</NavLink></Buttons>
             </div>
         </div>
     );

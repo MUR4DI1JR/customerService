@@ -6,6 +6,7 @@ import SignIn from './components/auth/signIn/signIn';
 import SignUp from "./components/auth/signUp/signUp";
 import {auth} from "./config/firebaseConfig";
 import {clearCurrentUser, setCurrentUser} from "./redux/auth/authAction";
+import SendDb from "./components/pages/sendDB/sendDB";
 
 
 
@@ -26,13 +27,14 @@ function App({currentUser, clearCurrentUser, setCurrentUser }) {
 
 
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route exact path='/sign-in' component={SignIn}/>
-        <Route exact path='/sign-up' component={SignUp}/>
-      </Switch>
-    </div>
+      <div className="App">
+          <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/sign-in' component={SignIn}/>
+              <Route exact path='/sign-up' component={SignUp}/>
+              <Route exact path='/send-email' component={SendDb}/>
+          </Switch>
+      </div>
   );
 }
 

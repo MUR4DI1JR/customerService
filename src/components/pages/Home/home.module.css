@@ -53,6 +53,7 @@ html, body {height:100vh;}
 }
 .right_side_bar{
     margin: 20px 90px;
+    display: block;
 }
 .right_side_bar a{
     font-weight: bold;

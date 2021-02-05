@@ -1,0 +1,28 @@
+.item{
+    display: flex;
+}
+.block{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+}
+.text_block h1{
+    margin: 5px 0;
+    color: #33234c;
+    font-weight: bold;
+}
+.text_block p{
+    margin: 5px 0;
+}
+.email{
+    width: 45%;
+    margin-top: 3%;
+    margin-left: 27%;
+    padding: 10px 5px;
+    align-items: center;
+    border: 1px solid #818587;
+    height: 70px;
+    border-radius: 5px;
+    box-shadow: 4px 3px 19px 0 #000000;
+}
