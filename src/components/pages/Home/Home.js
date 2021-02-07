@@ -4,8 +4,7 @@ import {NavLink} from "react-router-dom";
 import {nextClick} from "../../../redux/db/dbAction";
 import {auth} from "../../../config/firebaseConfig";
 
-
-import s from'./home.module.css';
+import './home.css';
 import Buttons from "../../UI/container/Button/buttons";
 import Address from "./Address";
 import Property from "./property";
@@ -13,13 +12,13 @@ import Sidebar from "../../UI/sidebar/sidebar";
 
 const Home = ({location, next, code, nextClick, currentUser}) => {
     return (
-        <div className={s.home}>
+        <div className="home">
             <Sidebar/>
                 {
                     next ? <Property/> :
-                        <div className={s.block}>
+                        <div className="block">
                             <Address/>
-                            <div className={s.confirm}>
+                            <div className="confirm">
                                 {location !== '' && code !== '' ?
                                     <Buttons clicked={nextClick} btnType={location ? "Success" : "Danger"}>Next</Buttons>
                                         :
@@ -28,7 +27,7 @@ const Home = ({location, next, code, nextClick, currentUser}) => {
                             </div>
                         </div>
                 }
-            <div className={s.right_side_bar}>
+            <div className="right_side_bar">
                 {currentUser === null ? <NavLink to="/sign-in">Sign in</NavLink> : <button onClick={() => auth.signOut()}>sign out</button>}
             </div>
 
