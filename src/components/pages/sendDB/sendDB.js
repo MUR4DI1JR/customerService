@@ -33,7 +33,7 @@ const SendDb = ({location, states, city, code, aboutProperty, typeProperty, coun
                 investValue: investValue,
                 homeValue: homeValue
             }).then(() => {
-                alert("Good, wait for an answer!")
+                alert("Good,  wait for an answer!")
             })
         }else{
             return
